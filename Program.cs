@@ -10,9 +10,10 @@ namespace ToDoList
         static string[] possibleInputs = { "add-item", "remove-item", "mark-as", "show", "exit" };
         static void Main(string[] args)
         {
-            
+            AskQuestion();
         }
 
+        // Asks questions to a user with possible options
         static void AskQuestion()
         {
             Console.WriteLine("This is your new To-Do list 3000");
@@ -25,15 +26,34 @@ namespace ToDoList
             string input = Console.ReadLine();
             InputController(input);
         }
-
+        // Handles basic user input
         static void InputController(string userInput)
         {
-
-
             if(Array.Exists(possibleInputs, x => x == userInput))
             {
-
+                switch(userInput)
+                {
+                    case "add-item":
+                        AddItem();
+                        break;
+                        
+                }
+            } else
+            {
+                Console.WriteLine("You've made a mistake, please try again");
+                AskQuestion();
             }
         }
+
+        // Adds an item
+        static void AddItem()
+        {
+
+        }
+        // Removes an item
+
+        // Marks task as 
+
+        // displays all the tasks
     }
 }
