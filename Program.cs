@@ -70,7 +70,7 @@ namespace ToDoList
                     AskQuestion();
                 } else
                 {
-                    Resize(ref tasksArray, 1);
+                    Resize<string[]>(ref tasksArray, 1);
                 }
             }
             
@@ -87,6 +87,7 @@ namespace ToDoList
         {
 
         }
+
 
         // displays all the tasks
 
