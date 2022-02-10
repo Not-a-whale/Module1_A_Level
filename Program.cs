@@ -4,8 +4,8 @@ namespace ToDoList
 {
     class Program
     {
-        static string[,] task = { };
-        static string[,] completedTask = { };
+        static string[,] tasksArray = { };
+        static string[,] completedTaskArray = { };
         static string[,] rejectedTask = { };
         static string[] possibleInputs = { "add-item", "remove-item", "mark-as", "show", "exit" };
         static void Main(string[] args)
@@ -36,7 +36,18 @@ namespace ToDoList
                     case "add-item":
                         AddItem();
                         break;
-                        
+
+                    case "remove-item":
+                        RemoveItem();
+                        break;
+                    case "mark-as":
+                        MarkItem();
+                        break;
+                    case "show":
+                        DisplayAll();
+                        break;
+                    case "exit":
+                        return;
                 }
             } else
             {
@@ -48,12 +59,51 @@ namespace ToDoList
         // Adds an item
         static void AddItem()
         {
-
+            Console.WriteLine("Please enter a name of the task");
+            string taskName = Console.ReadLine();
+            Console.WriteLine("Please enter it's due time");
+            string dueTime = Console.ReadLine().Length > 0 ? Console.ReadLine() : DateTime.Now.ToString();
+            for(int i = 0; i < completedTaskArray.Length; i++)
+            {
+                if (tasksArray[i, 0] == taskName)
+                {
+                    AskQuestion();
+                } else
+                {
+                    Resize(ref tasksArray, 1);
+                }
+            }
+            
         }
         // Removes an item
 
+        static void RemoveItem()
+        {
+
+        }
+
         // Marks task as 
+        static void MarkItem()
+        {
+
+        }
 
         // displays all the tasks
+
+        static void DisplayAll()
+        {
+
+        }
+
+        public static void Resize<T>(ref T[] array, int value)
+        {
+            Array.Resize(ref array, array.Length + 1);
+        }
+
+        public static void Push<T>(ref T[] array, object value)
+        {
+            Resize(ref array, 1);
+            array.SetValue(value, array.Length - 1);
+        }
     }
 }
